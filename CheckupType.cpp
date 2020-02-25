@@ -6,11 +6,11 @@
 **/
 
 #include<iostream>
-#include "CheckupType.h"
+#include "CheckupType.hpp"
 
 
 //************* CONSTRUCTOR *****************
-Checkup::Checkup() {
+CheckupType::CheckupType() {
     patientNumber = "0000";
     systolicValue = 0.0;
     diastolicValue = 0.0;
@@ -20,7 +20,7 @@ Checkup::Checkup() {
 //**************** END ***********************
 
 //************** COPY CONSTRUCTOR ***************
-Checkup::Checkup(std::string pn, double sv, double dv, double lv, double hv) {
+CheckupType::CheckupType(std::string pn, double sv, double dv, double lv, double hv) {
     patientNumber = pn;
     systolicValue = sv;
     diastolicValue = dv;
@@ -30,7 +30,7 @@ Checkup::Checkup(std::string pn, double sv, double dv, double lv, double hv) {
 //***************** END ***************************
 
 //************* DESTRUCTOR ***************************
-Checkup::~Checkup() {
+CheckupType::~CheckupType() {
     delete &patientNumber;
     delete &systolicValue;
     delete &diastolicValue;
@@ -40,49 +40,49 @@ Checkup::~Checkup() {
 //***************** END *****************************
 
 //*************** FUNCTIONS ***************************
-void Checkup::computeRatio() {
+void CheckupType::computeRatio() {
     double ratio = LDLValue/HDLValue;
     std::cout << "The ratio is " << ratio << std::endl;
 }
 
-void Checkup::explainRatio() {
+void CheckupType::explainRatio() {
     std::cout << "Good cholesterol levels are values 3.5 or lower to " 
               << "be considered optimum." << std::endl;
 }
 //*************** END ******************************
 
 //************** MUTATORS *********************
-void Checkup::set_patientNumber(std::string pn) {
+void CheckupType::set_patientNumber(std::string pn) {
     patientNumber = pn;
 }
-void Checkup::set_systolicVal(double sv) {
+void CheckupType::set_systolicVal(double sv) {
     systolicValue = sv;
 }
-void Checkup::set_diastolicVal(double dv) {
+void CheckupType::set_diastolicVal(double dv) {
     diastolicValue = dv;
 }
-void Checkup::set_ldlVal(double lv) {
+void CheckupType::set_ldlVal(double lv) {
     LDLValue = lv;
 }
-void Checkup::set_hdlVal(double hv) {
+void CheckupType::set_hdlVal(double hv) {
     HDLValue = hv;
 }
 //**************** END ***********************
 
 //**************** ACCESSORS *******************
-std::string Checkup::get_patientNumber() {
+std::string CheckupType::get_patientNumber() {
     return patientNumber;
 }
-double Checkup::get_systolicVal() {
+double CheckupType::get_systolicVal() {
     return systolicValue;
 }
-double Checkup::get_diastolicVal() {
+double CheckupType::get_diastolicVal() {
     return diastolicValue;
 }
-double Checkup::get_ldlVal() {
+double CheckupType::get_ldlVal() {
     return LDLValue;
 }
-double Checkup::get_hdlVal() {
+double CheckupType::get_hdlVal() {
     return HDLValue;
 }
 //****************** END ************************

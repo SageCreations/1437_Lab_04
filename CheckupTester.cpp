@@ -5,79 +5,93 @@
  * 
 **/
 
-/*
-Blood pressure values are usually displayed with a slash between the 
-systolic and diastolic numbers. (Typical blood pressure 
-values are 110/78 or 130/90.) With the cholesterol figures, 
-display the explanation of the cholesterol ratio calculation. 
-(Typical cholesterol values are 100 and 40 or 180 and 70.)
-*/
-
 #include <iostream>
-#include "CheckupType.h"
+#include "CheckupType.hpp"
+#include "CheckupTester.hpp"
 
-Checkup getData();
-void showValues(Checkup patient);
-
-/*
-Create a tester program named TestCheckup whose main() method 
-declares four Checkup objects. Call a getData() method four times.
-*/
-
-int main() {
-    Checkup patient1, patient2, patient3, patient4;
-    
-    patient1 = getData();
-    patient2 = getData();
-    patient3 = getData();
-    patient4 = getData();
-
-    std::cout << "\n\n\n\n";
-
-    showValues(patient1);
-    showValues(patient2);
-    showValues(patient3);
-    showValues(patient4);
-
-    return 0;
+CheckupTester::CheckupTester() {
+    PatientOne = CheckupType();
+    PatientTwo = CheckupType();
+    PatientThree = CheckupType();
+    PatientFour = CheckupType();
 }
 
-/*
-Within the method, prompt a user for values for each field for a Checkup, 
-and return a Checkup object to the main() method where it is 
-assigned to one of main()’s Checkup objects. 
-*/
-Checkup getData() {
+CheckupType CheckupTester::getData(CheckupType p) {
     std::string pn;
     double sv, dv, lv, hv;
     std::cout << "\n\nPlease enter the patient's number: ";
     std::cin  >> pn;
+    p.set_patientNumber(pn);
     std::cout << "Please enter the systolic value: ";
     std::cin  >> sv;
+    p.set_systolicVal(sv);
     std::cout << "Please enter the diastolic value: ";
     std::cin  >> dv;
+    p.set_diastolicVal(dv);
     std::cout << "Please enter the LDL value: ";
     std::cin  >> lv;
+    p.set_ldlVal(lv);
     std::cout << "Please enter the HDL value: ";
     std::cin  >> hv;
+    p.set_hdlVal(hv);
     std::cout << std::endl;
 
-    Checkup p(pn,sv,dv,lv, hv);
     return p;
 }
 
-/*
-Then, in main(), pass each Checkup object in turn to a showValues()method 
-that displays the data. Blood pressure values are usually displayed 
-with a slash between the systolic and diastolic numbers.
-*/
-void showValues(Checkup patient) {
-    std::cout << "\n\nPatient number: " << patient.get_patientNumber() << std::endl;
-    std::cout << "Systolic over Diastolic value: " << patient.get_systolicVal() << "/"
-              << patient.get_diastolicVal() << std::endl;
-    std::cout << "Cholesterol level values: " << patient.get_ldlVal() << "/"
-              << patient.get_hdlVal() << " - ";
-    patient.computeRatio();
+void CheckupTester::showValues(CheckupType p) {
+    std::cout << "\n\nPatient number: " << p.get_patientNumber() << std::endl;
+    std::cout << "Systolic over Diastolic value: " << p.get_systolicVal() << "/"
+              << p.get_diastolicVal() << std::endl;
+    std::cout << "Cholesterol level values: " << p.get_ldlVal() << "/"
+              << p.get_hdlVal() << " - ";
+    p.computeRatio();
     std::cout << std::endl;
-    patient.explainRatio();
+    p.explainRatio();
+}
+
+CheckupType CheckupTester::get_p1() {
+    return PatientOne; 
+}
+CheckupType CheckupTester::get_p2() {
+    return PatientTwo;
+}
+CheckupType CheckupTester::get_p3() {
+    return PatientThree;
+}
+CheckupType CheckupTester::get_p4() {
+    return PatientFour;
+}
+
+void CheckupTester::set_p1(CheckupType p) {
+    PatientOne = p;
+}
+void CheckupTester::set_p2(CheckupType p) {
+    PatientTwo = p;
+}
+void CheckupTester::set_p3(CheckupType p) {
+    PatientThree = p;
+}
+void CheckupTester::set_p4(CheckupType p) {
+    PatientFour = p;
+}
+
+
+int main() {
+    
+    CheckupTester t;
+    
+    t.set_p1(t.getData(t.get_p1()));
+    t.set_p2(t.getData(t.get_p2()));
+    t.set_p3(t.getData(t.get_p3()));
+    t.set_p4(t.getData(t.get_p4()));
+
+    std::cout << "\n\n\n\n";
+
+    t.showValues(t.get_p1());
+    t.showValues(t.get_p2());
+    t.showValues(t.get_p3());
+    t.showValues(t.get_p4());
+    
+    return 0;
 }
