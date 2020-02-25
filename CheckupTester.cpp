@@ -1,12 +1,12 @@
 /**
- * 
+ *
  * Edward Cruz, 02/10/2020
  * Lab_04 - CheckupTester.cpp
- * 
+ *
 **/
 
 #include <iostream>
-#include "CheckupType.hpp"
+#include "CheckupType.cpp"
 #include "CheckupTester.hpp"
 
 CheckupTester::CheckupTester() {
@@ -51,7 +51,7 @@ void CheckupTester::showValues(CheckupType p) {
 }
 
 CheckupType CheckupTester::get_p1() {
-    return PatientOne; 
+    return PatientOne;
 }
 CheckupType CheckupTester::get_p2() {
     return PatientTwo;
@@ -78,9 +78,9 @@ void CheckupTester::set_p4(CheckupType p) {
 
 
 int main() {
-    
+
     CheckupTester t;
-    
+
     t.set_p1(t.getData(t.get_p1()));
     t.set_p2(t.getData(t.get_p2()));
     t.set_p3(t.getData(t.get_p3()));
@@ -92,6 +92,6 @@ int main() {
     t.showValues(t.get_p2());
     t.showValues(t.get_p3());
     t.showValues(t.get_p4());
-    
+
     return 0;
 }

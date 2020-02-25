@@ -1,26 +1,26 @@
 /**
- * 
+ *
  * Edward Cruz, 02/10/2020
  * Lab_04 - CheckupType.hpp
- * 
+ *
 **/
 
-#ifndef checkupType_hpp
-#define checkupType_hpp
+#ifndef CHECKUPTYPE_HPP
+#define CHECKUPTYPE_HPP
 
 #include <iostream>
 #include <string>
 
 class CheckupType {
 public:
-    
+
     CheckupType();
     CheckupType(std::string pn, double sv, double dv, double lv, double hv);
     ~CheckupType();
-    
+
     void set_patientNumber(std::string pn);
     std::string get_patientNumber();
-    
+
     void set_systolicVal(double sv);
     double get_systolicVal();
 
@@ -44,4 +44,4 @@ private:
     double      HDLValue;
 };
 
-#endif
+#endif /* CHECKUPTYPE_HPP */

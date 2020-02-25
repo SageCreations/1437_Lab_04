@@ -1,13 +1,12 @@
 /**
- * 
+ *
  * Edward Cruz, 02/10/2020
  * Lab_04 - CheckupType.cpp
- * 
+ *
 **/
 
-#include<iostream>
+#include <iostream>
 #include "CheckupType.hpp"
-
 
 //************* CONSTRUCTOR *****************
 CheckupType::CheckupType() {
@@ -46,7 +45,7 @@ void CheckupType::computeRatio() {
 }
 
 void CheckupType::explainRatio() {
-    std::cout << "Good cholesterol levels are values 3.5 or lower to " 
+    std::cout << "Good cholesterol levels are values 3.5 or lower to "
               << "be considered optimum." << std::endl;
 }
 //*************** END ******************************
